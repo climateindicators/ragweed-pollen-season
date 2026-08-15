@@ -33,7 +33,7 @@ datasets:
   - name: longitude
     type: number
     description: Station longitude, decimal degrees, verbatim from the source file.
-  - name: change_days
+  - name: value
     type: number
     description: Change in the length of ragweed pollen season from 1995 to 2015,
       in days, verbatim from the source file. Positive means the season grew longer;

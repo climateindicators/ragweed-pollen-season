@@ -1,4 +1,4 @@
-city,state_province,latitude,longitude,change_days
+city,state_province,latitude,longitude,value
 "Austin/Georgetown,",TX,30.63271111,-97.67727778,-1.084754492
 "Oklahoma City,",OK,35.46759444,-97.51646389,5.828571429
 "Rogers,",AR,36.33201944,-94.11852778,11.2254902

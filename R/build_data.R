@@ -76,16 +76,21 @@ f1 <- f1_raw |>
     state_province = `State/Province`,
     latitude       = `Latitude (decimal degrees)`,
     longitude      = `Longitude (decimal degrees)`,
-    change_days    = .data[[FIG1_VALUE_COL]]
+    # Named `value`, not `change_days`: the site's read_indicator() (in
+    # climateindicators.us/R/common.R) unconditionally coerces a column
+    # literally named `value` to numeric and errors if it is absent. Every
+    # indicator repository's primary measured column is named `value` for
+    # this reason.
+    value          = .data[[FIG1_VALUE_COL]]
   )
 
 assert_conservation(f1_raw, FIG1_VALUE_COL, nrow(f1), "figure 1")
 
 # ---- Assertions that survive a data update ------------------------------------
 
-change_numeric <- suppressWarnings(as.numeric(f1$change_days))
+change_numeric <- suppressWarnings(as.numeric(f1$value))
 stopifnot(
-  "figure 1: change_days must parse as a number for every station" =
+  "figure 1: value must parse as a number for every station" =
     !anyNA(change_numeric),
   "figure 1: should have exactly 11 station rows, per EPA's own indicator text ('11 locations')" =
     nrow(f1) == 11L,
@@ -131,7 +136,7 @@ meta <- list(
         )),
         col("latitude", "number", "Station latitude, decimal degrees, verbatim from the source file."),
         col("longitude", "number", "Station longitude, decimal degrees, verbatim from the source file."),
-        col("change_days", "number", paste(
+        col("value", "number", paste(
           "Change in the length of ragweed pollen season from 1995 to 2015,",
           "in days, verbatim from the source file. Positive means the season",
           "grew longer; the single negative value (Austin/Georgetown) means",

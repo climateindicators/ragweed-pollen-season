@@ -40,28 +40,28 @@ f1 <- rd("ragweed_pollen_season_change.csv")
 cat("\nFigure 1 (ragweed_pollen_season_change.csv)\n")
 check("11 rows", nrow(f1) == 11L)
 check("columns as documented",
-      identical(names(f1), c("city", "state_province", "latitude", "longitude", "change_days")))
+      identical(names(f1), c("city", "state_province", "latitude", "longitude", "value")))
 
 check("Austin/Georgetown row (first)",
       identical(as.list(f1[f1$city == "Austin/Georgetown,", ]),
                 list(city = "Austin/Georgetown,", state_province = "TX",
                      latitude = "30.63271111", longitude = "-97.67727778",
-                     change_days = "-1.084754492")))
+                     value = "-1.084754492")))
 check("Kansas City row",
       identical(as.list(f1[f1$city == "Kansas City,", ]),
                 list(city = "Kansas City,", state_province = "MO",
                      latitude = "39.08316", longitude = "-94.577429",
-                     change_days = "25.22807018")))
+                     value = "25.22807018")))
 check("Winnipeg row (Canadian entry)",
       identical(as.list(f1[f1$city == "Winnipeg,", ]),
                 list(city = "Winnipeg,", state_province = "MB, Canada",
                      latitude = "49.89975833", longitude = "-97.13749444",
-                     change_days = "24.56239413")))
+                     value = "24.56239413")))
 check("Saskatoon row (last)",
       identical(as.list(f1[f1$city == "Saskatoon,", ]),
                 list(city = "Saskatoon,", state_province = "SK, Canada",
                      latitude = "52.13439167", longitude = "-106.647675",
-                     change_days = "23.71541502")))
+                     value = "23.71541502")))
 
 check("all 11 city names present, each once",
       identical(sort(f1$city), sort(c(
@@ -71,18 +71,18 @@ check("all 11 city names present, each once",
       ))))
 check("no duplicate cities", !anyDuplicated(f1$city))
 
-change_numeric <- as.numeric(f1$change_days)
-check("exactly one negative change_days value", sum(change_numeric < 0) == 1L)
+change_numeric <- as.numeric(f1$value)
+check("exactly one negative value (change in days)", sum(change_numeric < 0) == 1L)
 check("the negative value belongs to Austin/Georgetown",
       f1$city[change_numeric < 0] == "Austin/Georgetown,")
 check("exactly 10 of 11 stations show a longer season (positive change)",
       sum(change_numeric > 0) == 10L)
-check("max change_days is Kansas City, 25.22807018",
+check("max value is Kansas City, 25.22807018",
       f1$city[which.max(change_numeric)] == "Kansas City," &&
-        f1$change_days[which.max(change_numeric)] == "25.22807018")
-check("min change_days is Austin/Georgetown, -1.084754492",
+        f1$value[which.max(change_numeric)] == "25.22807018")
+check("min value is Austin/Georgetown, -1.084754492",
       f1$city[which.min(change_numeric)] == "Austin/Georgetown," &&
-        f1$change_days[which.min(change_numeric)] == "-1.084754492")
+        f1$value[which.min(change_numeric)] == "-1.084754492")
 
 check("both Canadian entries carry ', Canada' in state_province",
       all(grepl(", Canada$", f1$state_province[f1$city %in% c("Winnipeg,", "Saskatoon,")])))
