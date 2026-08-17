@@ -50,6 +50,7 @@ unmodified:
 | `ragweed_2024 update file.docx` | `049aab7679ea54af9435a00704dd4dfec20dca4e2ec0472f907c302469e7206c` | <https://raw.githubusercontent.com/climateindicators/ragweed-pollen-season/main/data-raw/ragweed_2024%20update%20file.docx> |
 | `ragweed_TD_2024 update file CLEAN.docx` | `ec488fc426035f9ad6f14790187044064a3255b81f220a19408d4a4b3ca6bcd2` | <https://raw.githubusercontent.com/climateindicators/ragweed-pollen-season/main/data-raw/ragweed_TD_2024%20update%20file%20CLEAN.docx> |
 
+Both were obtained from EPA via a Freedom of Information Act (FOIA) request.
 EPA does not publish a raw `.docx` download for either the indicator narrative
 or the technical documentation, only the rendered HTML page and the technical
 documentation PDF (linked above) are public, so these two files could not be
