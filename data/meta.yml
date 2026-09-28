@@ -1,0 +1,36 @@
+indicator:
+  name: Ragweed Pollen Season
+  slug: ragweed-pollen-season
+  publisher: U.S. Environmental Protection Agency
+  source_page: https://19january2025snapshot.epa.gov/climate-indicators/climate-change-indicators-ragweed-pollen-season/index.html
+  technical_documentation: https://19january2025snapshot.epa.gov/system/files/documents/2024-06/ragweed_documentation.pdf
+  rights: Public domain, work of the U.S. Government (17 U.S.C. 105)
+datasets:
+- file: ragweed_pollen_season_change_by_location.csv
+  figure: Figure 1
+  figure_title: Figure 1. Change in Ragweed Pollen Season, 1995-2015
+  source_file: ragweed_fig-1.csv
+  source_sha256: 3941da5fe6c1b6207d7979a055496050c2bdbc2a2ccf68a713b82ba03f3b4e8e
+  source_encoding: UTF-8
+  data_source: Ziska et al., 2016
+  web_update: August 2016
+  unit: days
+  rows: 11
+  columns:
+  - name: city
+    type: character
+    description: City name, as published by EPA (some carry a trailing comma from
+      the source file).
+  - name: state_province
+    type: character
+    description: US state or Canadian province/country.
+  - name: latitude
+    type: number
+    description: Station latitude, decimal degrees.
+  - name: longitude
+    type: number
+    description: Station longitude, decimal degrees.
+  - name: value
+    type: number
+    description: Total change in length of ragweed pollen season from 1995 to 2015,
+      in days.
